@@ -6,28 +6,24 @@ import Card from './CardComponent';
 const Users = () => {
     const dispatch = useDispatch();
     const users = useSelector(state => state.users.users);
-
+    const loading = useSelector(state => state.users.loading);
+    const error = useSelector(state => state.users.error);
+  
     useEffect(() => {
-        dispatch(getUsers([{
-            id:1,
-            name:'Leanne',
-            company:{
-                name: 'BMW',
-                catchPhrase: 'Yeah Baby'
-            }
-        }]))
-    },[dispatch]);
-
+      dispatch(getUsers());
+    }, [])
+  
     return (
-        <>
-        {users.length > 0 && users.map((user) => 
-            <Card user={user} key={user.id}/>
-        )}
-        {users.length === 0 && <p>No Users!</p>}
-        
-        </>
+      <>
+        {users.loading && <p>Loading...</p>}
+        {users.length === 0 && !loading && <p>No users available!</p>}
+        {error && !loading && <p>{error}</p>}
+        {users.length > 0 && users.map((user) => (
+          <Card key={user.id} user={user} />
+        ))}
+      </>
     )
-}
+  }
 
 export default Users;
 
