@@ -1,3 +1,9 @@
+// Users
 export const GET_USERS_REQUESTED = 'GET_USERS_REQUESTED';
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
 export const GET_USERS_FAILED = 'GET_USERS_FAILED';
+
+// Random Dog Image
+export const GET_DOG_REQUESTED = 'GET_DOG_REQUESTED';
+export const GET_DOG_SUCCESS = 'GET_DOG_SUCCESS';
+export const GET_DOG_FAILED = 'GET_DOG_FAILED';

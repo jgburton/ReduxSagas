@@ -9,14 +9,17 @@ const Users = () => {
     const loading = useSelector(state => state.users.loading);
     const error = useSelector(state => state.users.error);
   
-    useEffect(() => {
-      dispatch(getUsers());
-    }, [])
+    // useEffect(() => {
+    //   dispatch(getUsers());
+    // }, [])
   
     return (
       <>
+        <br />
+        <button onClick={() => dispatch(getUsers())} style={{ margin: '10px' }} type="button" className="btn btn-primary">Request Contacts...</button>
+        <br />
         {users.loading && <p>Loading...</p>}
-        {users.length === 0 && !loading && <p>No users available!</p>}
+        {/* {users.length === 0 && !loading && <p>No users available!</p>} */}
         {error && !loading && <p>{error}</p>}
         {users.length > 0 && users.map((user) => (
           <Card key={user.id} user={user} />
